@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Трекер привычек</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <h1>🌱 Трекер привычек</h1>
+      <p class="today" id="today"></p>
+    </header>
+
+    <!-- Общий прогресс за сегодня -->
+    <section class="progress">
+      <div class="progress-text">
+        <span>Сегодня выполнено</span>
+        <strong id="progress-label">0 / 0</strong>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    </section>
+
+    <!-- Форма добавления новой привычки -->
+    <form class="add-form" id="add-form">
+      <input id="emoji-input" class="emoji-input" maxlength="2" value="💧" aria-label="Эмодзи">
+      <input id="name-input" class="name-input" placeholder="Новая привычка, например «Пить воду»" required>
+      <button type="submit">Добавить</button>
+    </form>
+
+    <!-- Сюда JavaScript рисует список привычек -->
+    <ul class="habits" id="habits"></ul>
+
+    <p class="empty" id="empty">Пока нет привычек. Добавь первую! ✨</p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

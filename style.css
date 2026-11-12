@@ -1,0 +1,137 @@
+/* ---------- Цвета (светлая тема) ---------- */
+:root {
+  --bg: #f4f6f3;
+  --card: #ffffff;
+  --text: #1f2a1f;
+  --muted: #6b766b;
+  --border: #e1e6e0;
+  --accent: #3fa65a;
+  --accent-soft: #dff3e4;
+  --danger: #d9534f;
+}
+
+/* ---------- Тёмная тема (включается автоматически) ---------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121612;
+    --card: #1c221c;
+    --text: #e8efe8;
+    --muted: #93a093;
+    --border: #2c352c;
+    --accent: #4cc26b;
+    --accent-soft: #1f3a26;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.app {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 32px 16px 64px;
+}
+
+.header h1 { margin: 0; font-size: 28px; }
+.today { margin: 4px 0 24px; color: var(--muted); }
+
+/* ---------- Прогресс ---------- */
+.progress {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.progress-text { display: flex; justify-content: space-between; margin-bottom: 10px; }
+.progress-bar { height: 10px; background: var(--accent-soft); border-radius: 99px; overflow: hidden; }
+.progress-fill { height: 100%; width: 0; background: var(--accent); transition: width .3s; }
+
+/* ---------- Форма ---------- */
+.add-form { display: flex; gap: 8px; margin-bottom: 24px; }
+.add-form input {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card);
+  color: var(--text);
+}
+.emoji-input { width: 56px; text-align: center; }
+.name-input { flex: 1; min-width: 0; }
+.add-form button {
+  padding: 12px 18px;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+}
+.add-form button:hover { filter: brightness(1.08); }
+
+/* ---------- Список привычек ---------- */
+.habits { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+
+.habit {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+}
+.habit-top { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.habit-emoji { font-size: 28px; }
+.habit-info { flex: 1; min-width: 0; }
+.habit-name { font-weight: 600; font-size: 17px; overflow-wrap: anywhere; }
+.habit-streak { color: var(--muted); font-size: 14px; margin-top: 2px; }
+
+.delete-btn {
+  border: none;
+  background: none;
+  color: var(--muted);
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+.delete-btn:hover { color: var(--danger); background: var(--bg); }
+
+/* ---------- Неделя (7 кружков) ---------- */
+.week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+.day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  border: none;
+  background: none;
+  color: var(--muted);
+  font-size: 12px;
+  cursor: pointer;
+  padding: 0;
+}
+.day-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: var(--muted);
+  transition: transform .15s, background .15s;
+}
+.day:hover .day-circle { transform: scale(1.08); }
+.day.done .day-circle { background: var(--accent); border-color: var(--accent); color: #fff; font-size: 16px; }
+.day.is-today { color: var(--text); font-weight: 700; }
+.day.is-today .day-circle { border-color: var(--accent); }
+
+.empty { text-align: center; color: var(--muted); margin-top: 32px; }
+.empty.hidden { display: none; }
